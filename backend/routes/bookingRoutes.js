@@ -8,7 +8,7 @@ import verifyOTP from "../controllers/bookingControllers/verifyOTP.js";
 import getPartnerBookings from "../controllers/bookingControllers/getPartnerBookings.js";
 import cancelBooking from "../controllers/bookingControllers/cancelBooking.js";
 import autoCancelOldBookings from "../controllers/bookingControllers/autoCancellOldBookings.js";
-import getOTP from "../controllers/bookingControllers/getOtp.js";
+import getOTP from "../controllers/bookingControllers/getOTP.js";
 import completeBooking from "../controllers/bookingControllers/completeBooking.js";
 
 const router = express.Router();
