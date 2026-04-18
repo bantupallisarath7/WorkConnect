@@ -68,7 +68,7 @@ const ConnectorCard = ({ data }) => {
           </span>
         </div>
 
-        {/* 🔥 SKILLS LIST (VERTICAL) */}
+        {/* SKILLS */}
         <div className="mt-4 space-y-2">
 
           {validWorkers.length === 0 ? (
@@ -90,7 +90,7 @@ const ConnectorCard = ({ data }) => {
                   </span>
                 </div>
 
-                {/* RIGHT (PRICE) */}
+                
                 <div className="flex items-center text-green-600 font-semibold">
                   <IndianRupee size={14} />
                   {worker.wage}

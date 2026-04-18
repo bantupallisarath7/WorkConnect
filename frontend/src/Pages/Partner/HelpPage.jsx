@@ -148,9 +148,8 @@ const HelpPage = () => {
                         </div>
 
                         <ChevronDown
-                          className={`transition-transform text-gray-400 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
+                          className={`transition-transform text-gray-400 ${isOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
 
@@ -169,78 +168,78 @@ const HelpPage = () => {
         </div>
 
         {/* CONTACT SUPPORT */}
-<div className="mt-10">
-  <h2 className="text-lg font-semibold text-gray-900 mb-3">
-    Still need help?
-  </h2>
+        <div className="mt-10">
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">
+            Still need help?
+          </h2>
 
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-    {/* CHAT */}
-    <div className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition cursor-pointer">
-      <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mb-3">
-        <MessageCircle className="text-orange-500" size={18} />
-      </div>
+            {/* CHAT */}
+            <div className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mb-3">
+                <MessageCircle className="text-orange-500" size={18} />
+              </div>
 
-      <h3 className="text-sm font-semibold text-gray-900">
-        Chat with us
-      </h3>
+              <h3 className="text-sm font-semibold text-gray-900">
+                Chat with us
+              </h3>
 
-      <p className="text-xs text-gray-500 mt-1">
-        Get instant help from our support team
-      </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Get instant help from our support team
+              </p>
 
-      <button className="mt-4 text-sm font-medium text-orange-500 hover:underline">
-        Start Chat
-      </button>
-    </div>
+              <button className="mt-4 text-sm font-medium text-orange-500 hover:underline">
+                Start Chat
+              </button>
+            </div>
 
-    {/* EMAIL */}
-    <div className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition">
-      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mb-3">
-        <Mail className="text-blue-500" size={18} />
-      </div>
+            {/* EMAIL */}
+            <div className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+                <Mail className="text-blue-500" size={18} />
+              </div>
 
-      <h3 className="text-sm font-semibold text-gray-900">
-        Email support
-      </h3>
+              <h3 className="text-sm font-semibold text-gray-900">
+                Email support
+              </h3>
 
-      <p className="text-xs text-gray-500 mt-1">
-        We usually respond within 24 hours
-      </p>
+              <p className="text-xs text-gray-500 mt-1">
+                We usually respond within 24 hours
+              </p>
 
-      <a
-        href="mailto:support@yourapp.com"
-        className="mt-4 inline-block text-sm font-medium text-blue-500 hover:underline"
-      >
-        support@yourapp.com
-      </a>
-    </div>
+              <a
+                href="mailto:support@yourapp.com"
+                className="mt-4 inline-block text-sm font-medium text-blue-500 hover:underline"
+              >
+                support@yourapp.com
+              </a>
+            </div>
 
-    {/* PHONE */}
-    <div className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition">
-      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mb-3">
-        <Phone className="text-green-500" size={18} />
-      </div>
+            {/* PHONE */}
+            <div className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition">
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mb-3">
+                <Phone className="text-green-500" size={18} />
+              </div>
 
-      <h3 className="text-sm font-semibold text-gray-900">
-        Call us
-      </h3>
+              <h3 className="text-sm font-semibold text-gray-900">
+                Call us
+              </h3>
 
-      <p className="text-xs text-gray-500 mt-1">
-        Available from 9 AM – 8 PM
-      </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Available from 9 AM – 8 PM
+              </p>
 
-      <a
-        href="tel:+919876543210"
-        className="mt-4 inline-block text-sm font-medium text-green-600 hover:underline"
-      >
-        +91 7330935579
-      </a>
-    </div>
+              <a
+                href="tel:+919876543210"
+                className="mt-4 inline-block text-sm font-medium text-green-600 hover:underline"
+              >
+                +91 7330935579
+              </a>
+            </div>
 
-  </div>
-</div>
+          </div>
+        </div>
 
         {/* EMPTY STATE */}
         {filteredFaqs.every((s) => s.items.length === 0) && (

@@ -84,7 +84,7 @@ const Navbar = ({ role }) => {
       setToggleLoading(true);
 
       const res = await axios.put(
-        "http://localhost:7265/api/connector/availability",
+        "https://workconnect-0306.onrender.com/api/connector/availability",
         { isAvailable: newStatus },
         { withCredentials: true }
       );
@@ -107,7 +107,7 @@ const Navbar = ({ role }) => {
     try {
       dispatch(signOutStart());
       await axios.post(
-        "http://localhost:7265/api/auth/signout",
+        "https://workconnect-0306.onrender.com/api/auth/signout",
         {},
         { withCredentials: true }
       );

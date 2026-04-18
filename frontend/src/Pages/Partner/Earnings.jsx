@@ -32,13 +32,13 @@ const Earnings = () => {
         general: "bg-gray-500 hover:bg-gray-600",
     };
 
-    // ✅ FETCH
+    // FETCH
     const fetchBookings = async () => {
         setLoading(true);
         setError(null);
         try {
             const res = await axios.get(
-                "http://localhost:7265/api/booking/partner/all",
+                "https://workconnect-0306.onrender.com/api/booking/partner/all",
                 { withCredentials: true }
             );
             setBookings(res.data.bookings || []);
@@ -54,7 +54,7 @@ const Earnings = () => {
         fetchBookings();
     }, []);
 
-    // ✅ FILTER
+    // FILTER
     const filteredBookings = useMemo(() => {
         const completed = bookings.filter(b => b.status === "completed");
 
@@ -76,7 +76,7 @@ const Earnings = () => {
         });
     }, [bookings, selectedDate]);
 
-    // ✅ TOTAL EARNINGS
+    // TOTAL EARNINGS
     const totalEarnings = useMemo(() => {
         return filteredBookings.reduce((sum, b) => {
             return currentUser?.role === "connector"

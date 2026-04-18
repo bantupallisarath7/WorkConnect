@@ -65,7 +65,7 @@ const Navbar = () => {
       dispatch(signOutStart());
 
       const res = await axios.post(
-        "http://localhost:7265/api/auth/signout",
+        "https://workconnect-0306.onrender.com/api/auth/signout",
         {},
         { withCredentials: true }
       );

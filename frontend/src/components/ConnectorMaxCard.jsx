@@ -57,8 +57,8 @@ const ConnectorMaxCard = ({ connector, onClose }) => {
       .filter((w) => quantities[w.skill] > 0)
       .map((w) => ({
         worker: w._id,
-        skill: w.skill,   // ✅ needed for UI
-        wage: w.wage,     // ✅ needed for frontend calculation
+        skill: w.skill,   // needed for UI
+        wage: w.wage,     // needed for frontend calculation
         count: quantities[w.skill],
       }));
 

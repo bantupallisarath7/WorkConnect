@@ -39,14 +39,14 @@ const ManageWorkers = () => {
         wage: "",
     });
 
-    // ✅ FETCH
+    // FETCH
     const fetchWorkers = async () => {
         setLoading(true);
         setError(null);
 
         try {
             const res = await axios.get(
-                `http://localhost:7265/api/connector/workers/${currentUser._id}`,
+                `https://workconnect-0306.onrender.com/api/connector/workers/${currentUser._id}`,
                 { withCredentials: true }
             );
 
@@ -66,7 +66,7 @@ const ManageWorkers = () => {
         fetchWorkers();
     }, []);
 
-    // ✅ ADD
+    // ADD
     const handleAdd = async () => {
         if (!form.skill || !form.count || !form.wage) return;
 
@@ -74,7 +74,7 @@ const ManageWorkers = () => {
         setError(null);
         try {
             const res = await axios.post(
-                "http://localhost:7265/api/connector/workers/create",
+                "https://workconnect-0306.onrender.com/api/connector/workers/create",
                 {
                     skill: form.skill,
                     count: Number(form.count),
@@ -96,13 +96,13 @@ const ManageWorkers = () => {
         }
     };
 
-    // ✅ DELETE
+    // DELETE
     const handleDelete = async (id) => {
         setLoading(true);
         setError(null);
         try {
             await axios.delete(
-                `http://localhost:7265/api/connector/workers/${id}`,
+                `https://workconnect-0306.onrender.com/api/connector/workers/${id}`,
                 { withCredentials: true }
             );
 
@@ -114,7 +114,7 @@ const ManageWorkers = () => {
         }
     };
 
-    // ✅ EDIT
+    // EDIT
     const handleEdit = (worker) => {
         setEditId(worker._id);
         setForm({
@@ -125,13 +125,13 @@ const ManageWorkers = () => {
         setIsModalOpen(true);
     };
 
-    // ✅ UPDATE
+    // UPDATE
     const handleSave = async () => {
         setLoading(true);
         setError(null);
         try {
             const res = await axios.put(
-                `http://localhost:7265/api/connector/workers/${editId}`,
+                `https://workconnect-0306.onrender.com/api/connector/workers/${editId}`,
                 {
                     skill: form.skill,
                     count: Number(form.count),
@@ -180,7 +180,7 @@ const ManageWorkers = () => {
                 </p>
             </div>
 
-            {/* ✅ PRIORITY RENDERING */}
+            {/* PRIORITY RENDERING */}
 
             {/* 1. LOADING */}
             {loading && (

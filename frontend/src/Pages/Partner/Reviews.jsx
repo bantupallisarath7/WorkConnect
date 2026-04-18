@@ -47,7 +47,7 @@ const Reviews = () => {
     setError(null);
     try {
       const res = await axios.get(
-        "http://localhost:7265/api/review/all",
+        "https://workconnect-0306.onrender.com/api/review/all",
         { withCredentials: true }
       );
       setReviews(res.data.reviews || []);
@@ -152,9 +152,7 @@ const Reviews = () => {
               {reviews.map((r) => (
                 <div
                   key={r._id}
-                  className="group relative bg-white rounded-2xl border border-gray-100 p-5 
-    shadow-sm hover:shadow-lg hover:-translate-y-[2px] 
-    transition-all duration-300"
+                  className="group relative bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-lg hover:-translate-y-[2px] transition-all duration-300"
                 >
                   {/* subtle glow */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-orange-50 via-transparent to-transparent pointer-events-none"></div>

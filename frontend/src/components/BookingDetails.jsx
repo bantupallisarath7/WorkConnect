@@ -12,7 +12,7 @@ import formatError from "../utils/formatError";
 import SimpleLoader from "../components/SimpleLoader";
 import { useNavigate } from "react-router-dom";
 
-// ✅ FINAL STATUS COLORS (CONSISTENT)
+// FINAL STATUS COLORS (CONSISTENT)
 const getStatusStyle = (status) => {
   switch (status) {
     case "pending":
@@ -48,7 +48,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
     setError("");
     try {
       const res = await axios.get(
-        `http://localhost:7265/api/booking/get-otp/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/get-otp/${booking._id}`,
         { withCredentials: true }
       );
       setOtp(res.data.otp);
@@ -81,7 +81,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
       setActionLoading(true);
 
       await axios.post(
-        `http://localhost:7265/api/booking/complete/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/complete/${booking._id}`,
         { manual: true },
         { withCredentials: true }
       );
@@ -101,7 +101,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
       setCancelLoading(true);
 
       await axios.post(
-        `http://localhost:7265/api/booking/cancel/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/cancel/${booking._id}`,
         {},
         { withCredentials: true }
       );
@@ -136,7 +136,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
         {/* CONTENT */}
         <div className="p-5 space-y-5 overflow-y-auto bg-gray-50">
 
-          {/* 🔐 OTP SECTION (ONLY FOR ACCEPTED) */}
+          {/* OTP SECTION (ONLY FOR ACCEPTED) */}
           {booking.status === "accepted" && (
             <div className="relative bg-white rounded-3xl p-5 shadow-md overflow-hidden">
 
@@ -185,7 +185,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
             </div>
           )}
 
-          {/* 📦 MAIN INFO */}
+          {/* MAIN INFO */}
           <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100">
             <div className="flex justify-between items-start gap-3">
 

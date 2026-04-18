@@ -81,7 +81,7 @@ const ManageBookings = () => {
     setError(null);
     try {
       const res = await axios.get(
-        `http://localhost:7265/api/booking/partner/all`,
+        `https://workconnect-0306.onrender.com/api/booking/partner/all`,
         { withCredentials: true }
       );
 
@@ -98,12 +98,12 @@ const ManageBookings = () => {
     fetchBookings();
   }, []);
 
-  // ✅ FILTER BOOKINGS
+  // FILTER BOOKINGS
   const filteredBookings = useMemo(() => {
     return bookings.filter((b) => b.status === filter);
   }, [bookings, filter]);
 
-  // ✅ FORMAT ADDRESS
+  // FORMAT ADDRESS
   const formatAddress = (addr) => {
     if (!addr) return "";
     return [
@@ -116,13 +116,13 @@ const ManageBookings = () => {
       .join(", ");
   };
 
-  // ✅ ACCEPT
+  // ACCEPT
   const handleAccept = async (booking) => {
     setError(null);
     setActionLoading((prev) => ({ ...prev, accept: booking._id }));
     try {
       await axios.post(
-        `http://localhost:7265/api/booking/accept/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/accept/${booking._id}`,
         {},
         { withCredentials: true }
       );
@@ -144,13 +144,13 @@ const ManageBookings = () => {
     }
   };
 
-  // ✅ CANCEL
+  // CANCEL
   const handleCancel = async (booking) => {
     setError(null);
     setActionLoading((prev) => ({ ...prev, cancel: booking._id }));
     try {
       await axios.post(
-        `http://localhost:7265/api/booking/cancel/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/cancel/${booking._id}`,
         {},
         { withCredentials: true }
       );
@@ -172,7 +172,7 @@ const ManageBookings = () => {
     }
   };
 
-  // ✅ OTP INPUT
+  // OTP INPUT
   const handleOtpChange = (value, index) => {
     if (!/^[0-9]?$/.test(value)) return;
 
@@ -190,7 +190,7 @@ const ManageBookings = () => {
     }
   };
 
-  // ✅ VERIFY OTP
+  // VERIFY OTP
   const handleVerifyOtp = async () => {
     const finalOtp = otp.join("");
 
@@ -203,7 +203,7 @@ const ManageBookings = () => {
       setOtpError("");
 
       await axios.post(
-        `http://localhost:7265/api/booking/verify/${selectedBooking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/verify/${selectedBooking._id}`,
         { otp: finalOtp },
         { withCredentials: true }
       );

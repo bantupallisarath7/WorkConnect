@@ -10,7 +10,7 @@ const verifyOTP = async (req, res, next) => {
             return next(errorHandler(400, "Email and OTP are required"));
         }
 
-        // 🔹 Get stored OTP
+        // Get stored OTP
         const storedOtp = await redis.get(`otp:${email}`);
 
         if (!storedOtp) {
@@ -21,7 +21,7 @@ const verifyOTP = async (req, res, next) => {
             return next(errorHandler(400, "Invalid OTP"));
         }
 
-        // 🔹 Get temp signup data
+        // Get temp signup data
         const userData = await redis.get(`signup:${email}`);
 
         if (!userData) {
@@ -30,7 +30,7 @@ const verifyOTP = async (req, res, next) => {
 
         const parsedData = JSON.parse(userData);
 
-        // 🔹 Double check (safety)
+        // Double check (safety)
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return next(errorHandler(400, "User already exists"));
@@ -41,7 +41,7 @@ const verifyOTP = async (req, res, next) => {
             isVerified: true,
         });
 
-        // 🔹 Clean Redis
+        // Clean Redis
         await redis.del(`otp:${email}`);
         await redis.del(`signup:${email}`);
 

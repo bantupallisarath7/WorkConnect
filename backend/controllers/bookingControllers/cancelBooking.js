@@ -11,19 +11,19 @@ const cancelBooking = async (req, res, next) => {
       const userId = req.user.id;
       const { bookingId } = req.params;
 
-      // ✅ Validate ID
+      // Validate ID
       if (!mongoose.Types.ObjectId.isValid(bookingId)) {
         throw errorHandler(400, "Invalid booking ID");
       }
 
-      // ✅ Fetch booking
+      // Fetch booking
       const booking = await Booking.findById(bookingId).session(session);
 
       if (!booking) {
         throw errorHandler(404, "Booking not found");
       }
 
-      // ✅ Prevent invalid cancellations
+      // Prevent invalid cancellations
       if (["cancelled", "completed"].includes(booking.status)) {
         throw errorHandler(
           400,
@@ -33,7 +33,7 @@ const cancelBooking = async (req, res, next) => {
         );
       }
 
-      // ✅ Authorization
+      // Authorization
       const isUser = booking.userId.toString() === userId;
       const isPartner = booking.partnerId.toString() === userId;
 
@@ -41,24 +41,18 @@ const cancelBooking = async (req, res, next) => {
         throw errorHandler(403, "Unauthorized to cancel this booking");
       }
 
-      // =========================================================
-      // 🔥 RESTORE INVENTORY (ATOMIC)
-      // =========================================================
       if (booking.workers && booking.workers.length > 0) {
         for (const w of booking.workers) {
           await WorkforceCapacity.updateOne(
             { _id: w.worker },
             {
-              $inc: { count: w.count }, // ✅ atomic restore
+              $inc: { count: w.count }, //  atomic restore
             },
             { session }
           );
         }
       }
 
-      // =========================================================
-      // 🔥 SAFE BOOKING UPDATE (PREVENT DOUBLE CANCEL)
-      // =========================================================
       const updatedBooking = await Booking.findOneAndUpdate(
         {
           _id: bookingId,
@@ -80,7 +74,7 @@ const cancelBooking = async (req, res, next) => {
         throw errorHandler(400, "Booking already processed");
       }
 
-      // ✅ Response
+      // Response
       res.status(200).json({
         success: true,
         message: "Booking cancelled successfully",

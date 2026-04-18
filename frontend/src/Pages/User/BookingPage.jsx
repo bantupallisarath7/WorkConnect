@@ -153,7 +153,7 @@ const BookingPage = () => {
       };
 
       const res = await axios.post(
-        "http://localhost:7265/api/booking/create",
+        "https://workconnect-0306.onrender.com/api/booking/create",
         payload,
         { withCredentials: true }
       );

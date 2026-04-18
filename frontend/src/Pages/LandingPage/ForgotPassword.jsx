@@ -36,7 +36,7 @@ const ForgotPassword = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:7265/api/auth/forgot-password",
+        "https://workconnect-0306.onrender.com/api/auth/forgot-password",
         { email }
       );
 

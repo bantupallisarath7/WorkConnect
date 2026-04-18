@@ -29,7 +29,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
         setError(null);
         try {
             const res = await axios.get(
-                `http://localhost:7265/api/review/partner/${user._id}`,
+                `https://workconnect-0306.onrender.com/api/review/partner/${user._id}`,
                 { withCredentials: true }
             );
             setReviews(res.data.reviews || []);
@@ -66,7 +66,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
         setError(null);
         try {
             const res = await axios.patch(
-                `http://localhost:7265/api/review/${reviewId}/helpful`,
+                `https://workconnect-0306.onrender.com/api/review/${reviewId}/helpful`,
                 {},
                 { withCredentials: true }
             );
@@ -223,7 +223,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                                             return (
                                                 <div key={star} className="flex items-center gap-2">
 
-                                                    {/* ⭐ STAR + NUMBER */}
+                                                    {/* STAR + NUMBER */}
                                                     <div className="flex items-center gap-1 w-10 text-xs text-gray-700">
                                                         <Star size={14} className="text-orange-400 fill-orange-400" />
                                                         <span>{star}</span>

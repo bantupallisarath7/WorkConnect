@@ -8,7 +8,7 @@ const resetAvailability = async () => {
   try {
     const result = await User.updateMany(
       {
-        role: { $in: ["worker", "connector"] }, // ✅ both roles
+        role: { $in: ["worker", "connector"] },
         "availability.isAvailable": true,
       },
       {

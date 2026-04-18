@@ -31,7 +31,7 @@ const Profile = () => {
         try {
             setInitialLoading(true);
             const res = await axios.get(
-                "http://localhost:7265/api/user/profile",
+                "https://workconnect-0306.onrender.com/api/user/profile",
                 { withCredentials: true }
             );
             setUser(res.data.user);
@@ -57,7 +57,7 @@ const Profile = () => {
         setError(null);
         try {
             const res = await axios.put(
-                "http://localhost:7265/api/user/profile",
+                "https://workconnect-0306.onrender.com/api/user/profile",
                 form,
                 { withCredentials: true }
             );
@@ -76,7 +76,7 @@ const Profile = () => {
         setError(null);
         try {
             const res = await axios.get(
-                "http://localhost:7265/api/booking/all",
+                "https://workconnect-0306.onrender.com/api/booking/all",
                 { withCredentials: true }
             );
             setBookings(res.data.bookings || []);

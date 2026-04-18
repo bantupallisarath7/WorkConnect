@@ -24,17 +24,17 @@ const forgotPassword = async (req, res, next) => {
 
         await user.save();
 
-        const resetURL = `http://localhost:5173/reset-password/${token}`;
+        const resetURL = `https://work-connect-seven.vercel.app/reset-password/${token}`;
 
-        // Email message
+        // Email message 
         const message = `
-      You requested a password reset.
+            You requested a password reset.
 
-      Click this link to reset your password:
-      ${resetURL}
+            Click this link to reset your password:
+            ${resetURL}
 
-      This link will expire in 15 minutes.
-    `;
+            This link will expire in 15 minutes.
+        `;
 
         await sendEmail(user.email, "Password Reset", message);
 

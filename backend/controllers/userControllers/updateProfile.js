@@ -42,7 +42,7 @@ const updateProfile = async (req, res, next) => {
         //  WORKER: SKILLS HANDLING
         if (user.role === "worker") {
             if (skills) {
-                // 🔥 Clean + normalize skills
+                // Clean + normalize skills
                 const cleanedSkills = skills
                     .filter(
                         (s) =>
@@ -65,7 +65,7 @@ const updateProfile = async (req, res, next) => {
                 user.skills = cleanedSkills;
             }
         } else {
-            // ❌ Non-workers shouldn't have skills
+            // Non-workers shouldn't have skills
             user.skills = [];
         }
 

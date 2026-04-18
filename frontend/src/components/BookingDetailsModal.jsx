@@ -51,7 +51,7 @@ const BookingDetailsModal = ({ booking, onClose, onUpdate }) => {
     setLoading((p) => ({ ...p, accept: true }));
     try {
       await axios.post(
-        `http://localhost:7265/api/booking/accept/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/accept/${booking._id}`,
         {},
         { withCredentials: true }
       );
@@ -74,7 +74,7 @@ const BookingDetailsModal = ({ booking, onClose, onUpdate }) => {
     setLoading((p) => ({ ...p, cancel: true }));
     try {
       await axios.post(
-        `http://localhost:7265/api/booking/cancel/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/cancel/${booking._id}`,
         {},
         { withCredentials: true }
       );
@@ -92,7 +92,7 @@ const BookingDetailsModal = ({ booking, onClose, onUpdate }) => {
     }
   };
 
-  // ---------------- OTP CHANGE ----------------
+  //  OTP CHANGE
   const handleOtpChange = (val, i) => {
     if (!/^[0-9]?$/.test(val)) return;
 
@@ -103,7 +103,7 @@ const BookingDetailsModal = ({ booking, onClose, onUpdate }) => {
     if (val && i < 3) document.getElementById(`otp-${i + 1}`)?.focus();
   };
 
-  // ---------------- VERIFY ----------------
+  // VERIFY
   const handleVerify = async () => {
     const finalOtp = otp.join("");
 
@@ -115,7 +115,7 @@ const BookingDetailsModal = ({ booking, onClose, onUpdate }) => {
     setLoading((p) => ({ ...p, verify: true }));
     try {
       await axios.post(
-        `http://localhost:7265/api/booking/verify/${booking._id}`,
+        `https://workconnect-0306.onrender.com/api/booking/verify/${booking._id}`,
         { otp: finalOtp },
         { withCredentials: true }
       );

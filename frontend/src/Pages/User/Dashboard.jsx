@@ -51,13 +51,13 @@ const Dashboard = () => {
   };
 
 
-  // ✅ FETCH CONNECTORS
+  // FETCH CONNECTORS
   const fetchConnectors = async () => {
     setLoadingConnectors(true);
     setError(null);
     try {
       const res = await axios.get(
-        `http://localhost:7265/api/connector/top-connectors?city=${selectedCity}`,
+        `https://workconnect-0306.onrender.com/api/connector/top-connectors?city=${selectedCity}`,
         {
           withCredentials: true
         }
@@ -70,13 +70,13 @@ const Dashboard = () => {
     }
   };
 
-  // ✅ FETCH WORKERS
+  // FETCH WORKERS
   const fetchWorkers = async () => {
     setLoadingWorkers(true);
     setError(null);
     try {
       const res = await axios.get(
-        `http://localhost:7265/api/connector/top-workers?city=${selectedCity}`,
+        `https://workconnect-0306.onrender.com/api/connector/top-workers?city=${selectedCity}`,
         { withCredentials: true }
       );
       setWorkers(res.data.workers || []);
@@ -105,7 +105,7 @@ const Dashboard = () => {
     );
   }, [connectors]);
 
-  // ✅ PRIORITY RENDERING
+  // PRIORITY RENDERING
   if (!selectedCity) {
     return (
       <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center text-center px-4">
@@ -268,7 +268,7 @@ const Dashboard = () => {
                 >
                   {activeTab === "worker" ? (
                     workers.length === 0 ? (
-                      // ✅ WORKER EMPTY STATE
+                      //  WORKER EMPTY STATE
                       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
 
                         <div className="bg-orange-100 p-5 rounded-full shadow-sm text-orange-500 mb-4">
@@ -296,7 +296,7 @@ const Dashboard = () => {
                       ))
                     )
                   ) : validConnectors.length === 0 ? (
-                    // ✅ CONNECTOR EMPTY STATE
+                    //  CONNECTOR EMPTY STATE
                     <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
 
                       <div className="bg-orange-100 p-5 rounded-full shadow-sm text-orange-500 mb-4">

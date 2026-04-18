@@ -40,13 +40,13 @@ const Dashboard = () => {
     };
     const config = dashboardConfig[currentUser?.role];
 
-    // ✅ FETCH BOOKINGS FROM API
+    // FETCH BOOKINGS FROM API
     const fetchBookings = async () => {
         setLoading(true);
         setError(null);
         try {
             const res = await axios.get(
-                "http://localhost:7265/api/booking/partner/all",
+                "https://workconnect-0306.onrender.com/api/booking/partner/all",
                 { withCredentials: true }
             );
             setBookings(res.data.bookings || []);
@@ -86,7 +86,7 @@ const Dashboard = () => {
         });
     }, [selectedDate, bookings]);
 
-    // ✅ STATS (UNCHANGED UI)
+    // STATS (UNCHANGED UI)
     const stats = useMemo(() => {
         const totalBookings = filteredBookings.length;
         const completedBookings = filteredBookings.filter(

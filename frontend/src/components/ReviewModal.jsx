@@ -42,7 +42,7 @@ const ReviewModal = ({ booking, onClose }) => {
             setError(null);
 
             await axios.post(
-                "http://localhost:7265/api/review/",
+                "https://workconnect-0306.onrender.com/api/review/",
                 {
                     reviewedUser: booking.partnerId,
                     booking: booking._id,

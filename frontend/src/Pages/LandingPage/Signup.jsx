@@ -26,7 +26,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  // ✅ Validation
+  // Validation
   const validateForm = () => {
     const { name, email, password } = formData;
 
@@ -56,7 +56,7 @@ const Signup = () => {
     return null;
   };
 
-  // ✅ Signup
+  // Signup
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -73,8 +73,8 @@ const Signup = () => {
       setFormError("");
 
       const res = await axios.post(
-        "http://localhost:7265/api/auth/signup",
-        { ...formData, role }, // ✅ dynamic role
+        "https://workconnect-0306.onrender.com/api/auth/signup",
+        { ...formData, role }, // dynamic role
         { withCredentials: true }
       );
 
@@ -93,7 +93,7 @@ const Signup = () => {
     }
   };
 
-  // ✅ OTP Change
+  // OTP Change
   const handleOtpChange = (value, index) => {
     if (!/^[0-9]?$/.test(value)) return;
 
@@ -106,18 +106,18 @@ const Signup = () => {
     }
   };
 
-  // ✅ Backspace navigation
+  // Backspace navigation
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       document.getElementById(`otp-${index - 1}`)?.focus();
     }
   };
 
-  // ✅ Verify OTP
+  // Verify OTP
   const handleVerify = async () => {
     const enteredOtp = otp.join("");
 
-    // 🔴 Important validation
+    // Important validation
     if (enteredOtp.length !== otp.length) {
       setError("Please enter complete OTP");
       return;
@@ -128,7 +128,7 @@ const Signup = () => {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:7265/api/auth/verify-otp",
+        "https://workconnect-0306.onrender.com/api/auth/verify-otp",
         {
           email: formData.email,
           otp: enteredOtp,
@@ -138,7 +138,7 @@ const Signup = () => {
       if (res?.data?.success) {
         setVerified(true);
 
-        // ✅ Redirect after success
+        // Redirect after success
         setTimeout(() => {
           navigate("/signin");
         }, 1500);
@@ -150,7 +150,7 @@ const Signup = () => {
     }
   };
 
-  // ✅ Better Timer (fixed bug)
+  // Better Timer (fixed bug)
   useEffect(() => {
     if (!showOTPModal) return;
 
@@ -167,7 +167,7 @@ const Signup = () => {
     return () => clearInterval(interval);
   }, [showOTPModal]);
 
-  // ✅ Reset modal state
+  // Reset modal state
   useEffect(() => {
     if (!showOTPModal) {
       setTimer(60);
@@ -177,12 +177,12 @@ const Signup = () => {
     }
   }, [showOTPModal]);
 
-  // ✅ Prevent scroll
+  // Prevent scroll
   useEffect(() => {
     document.body.style.overflow = showOTPModal ? "hidden" : "auto";
   }, [showOTPModal]);
 
-  // ✅ Focus first OTP input
+  // Focus first OTP input
   useEffect(() => {
     if (showOTPModal) {
       setTimeout(() => {
@@ -191,7 +191,7 @@ const Signup = () => {
     }
   }, [showOTPModal]);
 
-  // ✅ Resend OTP
+  // Resend OTP
   const handleResend = async () => {
     if (loading) return;
 
@@ -199,7 +199,7 @@ const Signup = () => {
       setLoading(true);
       setTimer(60);
 
-      await axios.post("http://localhost:7265/api/auth/resend-otp", {
+      await axios.post("https://workconnect-0306.onrender.com/api/auth/resend-otp", {
         email: formData.email,
       });
 
@@ -251,7 +251,7 @@ const Signup = () => {
               <input
                 type="email"
                 placeholder="Email Address"
-                disabled={showOTPModal}   // ✅ lock email
+                disabled={showOTPModal}   // lock email
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })

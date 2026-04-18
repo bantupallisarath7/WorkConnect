@@ -52,7 +52,7 @@ const Profile = () => {
     setError(null);
     try {
       const res = await axios.get(
-        "http://localhost:7265/api/user/profile",
+        "https://workconnect-0306.onrender.com/api/user/profile",
         { withCredentials: true }
       );
       setUser(res.data.user);
@@ -86,7 +86,7 @@ const Profile = () => {
       };
 
       const res = await axios.put(
-        "http://localhost:7265/api/user/profile",
+        "https://workconnect-0306.onrender.com/api/user/profile",
         payload,
         { withCredentials: true }
       );
@@ -184,7 +184,7 @@ const Profile = () => {
                       {user.role}
                     </p>
 
-                    {/* ✅ AVAILABILITY BADGE */}
+                    {/* AVAILABILITY BADGE */}
                     {user.role !== "user" && (
                       <span
                         className={`flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-full ${user.availability?.isAvailable
@@ -434,7 +434,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              {/* ✅ PREMIUM SKILLS CARD */}
+              {/* PREMIUM SKILLS CARD */}
               {user.role === "worker" && (
                 <div className="bg-white rounded-3xl shadow-md p-6 space-y-5">
 

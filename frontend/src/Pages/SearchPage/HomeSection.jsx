@@ -78,7 +78,7 @@ const HomeSection = () => {
             });
 
             const res = await fetch(
-                `http://localhost:7265/api/user/search/connectors?${params.toString()}`
+                `https://workconnect-0306.onrender.com/api/user/search/connectors?${params.toString()}`
             );
 
             const data = await res.json();

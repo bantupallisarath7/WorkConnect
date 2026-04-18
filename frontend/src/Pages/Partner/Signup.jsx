@@ -45,7 +45,7 @@ const Signup = ({ role }) => {
 
 
 
-  // ✅ Validation
+  // Validation
   const validateForm = () => {
     const { name, email, phone, password } = formData;
 
@@ -85,7 +85,7 @@ const Signup = ({ role }) => {
     return null;
   };
 
-  // ✅ Signup API
+  // Signup API
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -102,7 +102,7 @@ const Signup = ({ role }) => {
       setFormError("");
 
       const res = await axios.post(
-        "http://localhost:7265/api/auth/signup",
+        "https://workconnect-0306.onrender.com/api/auth/signup",
         { ...formData, role },
         { withCredentials: true }
       );
@@ -121,7 +121,7 @@ const Signup = ({ role }) => {
     }
   };
 
-  // ✅ OTP change
+  // OTP change
   const handleOtpChange = (value, index) => {
     if (!/^[0-9]?$/.test(value)) return;
 
@@ -134,14 +134,14 @@ const Signup = ({ role }) => {
     }
   };
 
-  // ✅ Backspace
+  // Backspace
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       document.getElementById(`otp-${index - 1}`)?.focus();
     }
   };
 
-  // ✅ Verify OTP
+  // Verify OTP
   const handleVerify = async () => {
     const enteredOtp = otp.join("");
 
@@ -155,7 +155,7 @@ const Signup = ({ role }) => {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:7265/api/auth/verify-otp",
+        "https://workconnect-0306.onrender.com/api/auth/verify-otp",
         {
           email: formData.email,
           otp: enteredOtp,
@@ -176,7 +176,7 @@ const Signup = ({ role }) => {
     }
   };
 
-  // ✅ Timer (same as user)
+  // Timer (same as user)
   useEffect(() => {
     if (!showOTPModal) return;
 
@@ -193,7 +193,7 @@ const Signup = ({ role }) => {
     return () => clearInterval(interval);
   }, [showOTPModal]);
 
-  // ✅ Reset
+  // Reset
   useEffect(() => {
     if (!showOTPModal) {
       setTimer(60);
@@ -203,12 +203,12 @@ const Signup = ({ role }) => {
     }
   }, [showOTPModal]);
 
-  // ✅ Scroll lock
+  // Scroll lock
   useEffect(() => {
     document.body.style.overflow = showOTPModal ? "hidden" : "auto";
   }, [showOTPModal]);
 
-  // ✅ Focus first box
+  // Focus first box
   useEffect(() => {
     if (showOTPModal) {
       setTimeout(() => {
@@ -217,7 +217,7 @@ const Signup = ({ role }) => {
     }
   }, [showOTPModal]);
 
-  // ✅ Resend OTP
+  // Resend OTP
   const handleResend = async () => {
     if (loading) return;
 
@@ -225,7 +225,7 @@ const Signup = ({ role }) => {
       setLoading(true);
       setTimer(60);
 
-      await axios.post("http://localhost:7265/api/auth/resend-otp", {
+      await axios.post("https://workconnect-0306.onrender.com/api/auth/resend-otp", {
         email: formData.email,
       });
 
@@ -349,7 +349,7 @@ const Signup = ({ role }) => {
         </div>
       </div>
 
-      {/* ✅ PREMIUM OTP MODAL (EXACT COPY) */}
+      {/* PREMIUM OTP MODAL (EXACT COPY) */}
       {showOTPModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
           <div className="w-full max-w-md bg-gray-900 text-white rounded-2xl shadow-2xl p-5 sm:p-6 md:p-8">
@@ -386,7 +386,7 @@ const Signup = ({ role }) => {
 
             {verified && (
               <p className="text-green-400 text-center mt-4 text-lg">
-                ✅ Verified Successfully
+                Verified Successfully
               </p>
             )}
 

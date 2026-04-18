@@ -38,7 +38,7 @@ const getProfile = async (req, res, next) => {
         rating: user.rating,
         totalJobs: user.totalJobs,
 
-        // ✅ Only expose for connector
+        // Only expose for connector
         ...(user.role === "connector" && {
           commissionRate: user.commissionRate,
         }),

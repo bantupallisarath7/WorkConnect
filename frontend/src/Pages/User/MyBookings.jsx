@@ -60,7 +60,7 @@ const MyBookings = () => {
         setError(null);
         try {
             const res = await axios.get(
-                "http://localhost:7265/api/booking/all",
+                "https://workconnect-0306.onrender.com/api/booking/all",
                 { withCredentials: true }
             );
             setBookings(res.data.bookings || []);
@@ -318,7 +318,7 @@ const MyBookings = () => {
                 </div>
             )}
 
-            {/* ✅ MODAL (no UI change, just overlay) */}
+            {/* MODAL (no UI change, just overlay) */}
             {selectedBooking && (
                 <BookingDetails
                     booking={selectedBooking}

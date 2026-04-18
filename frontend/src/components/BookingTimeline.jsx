@@ -41,7 +41,7 @@ const BookingTimeline = ({ status, bookingDate, manualComplete }) => {
 
 
 
-  // ❌ CANCELLED STATE (Improved)
+  // CANCELLED STATE (Improved)
   if (status === "cancelled") {
     return (
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
@@ -96,7 +96,7 @@ const BookingTimeline = ({ status, bookingDate, manualComplete }) => {
             return i > currentStep - 1;
           };
 
-          // ✅ CALL functions here
+          // CALL functions here
           const completed = isCompleted(index);
           const active = isActive(index);
           const upcoming = isUpcoming(index);

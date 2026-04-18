@@ -29,8 +29,6 @@ const Navbar = () => {
             </div>
 
                 {/* Desktop Menu */}
-
-
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
 
                     <Link to="/" className="relative group">

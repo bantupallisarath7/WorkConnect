@@ -22,14 +22,12 @@ const searchPartners = async (req, res, next) => {
 
     const pipeline = [];
 
-    /* ---------------- BASE MATCH ---------------- */
     pipeline.push({
       $match: {
         role: { $in: ["worker", "connector"] },
       },
     });
 
-    /* ---------------- LOOKUP WORKFORCE ---------------- */
     pipeline.push({
       $lookup: {
         from: "workforcecapacities",
@@ -39,20 +37,18 @@ const searchPartners = async (req, res, next) => {
       },
     });
 
-    /* ---------------- REMOVE ZERO COUNT WORKFORCE ---------------- */
     pipeline.push({
       $addFields: {
         workforce: {
           $filter: {
             input: "$workforce",
             as: "w",
-            cond: { $gt: ["$$w.count", 0] }, // ✅ important
+            cond: { $gt: ["$$w.count", 0] }, // important
           },
         },
       },
     });
 
-    /* ---------------- SEARCH ---------------- */
     if (search.trim()) {
       pipeline.push({
         $match: {
@@ -65,7 +61,6 @@ const searchPartners = async (req, res, next) => {
       });
     }
 
-    /* ---------------- CITY FILTER ---------------- */
     if (city) {
       pipeline.push({
         $match: {
@@ -76,7 +71,6 @@ const searchPartners = async (req, res, next) => {
       });
     }
 
-    /* ---------------- RATING FILTER ---------------- */
     if (minRating) {
       pipeline.push({
         $match: {
@@ -85,7 +79,6 @@ const searchPartners = async (req, res, next) => {
       });
     }
 
-    /* ---------------- EXPERIENCE FILTER (WORKERS ONLY) ---------------- */
     if (minExperience) {
       pipeline.push({
         $match: {
@@ -97,7 +90,6 @@ const searchPartners = async (req, res, next) => {
       });
     }
 
-    /* ---------------- WAGE FILTER ---------------- */
     if (minWage || maxWage) {
       pipeline.push({
         $addFields: {
@@ -140,18 +132,16 @@ const searchPartners = async (req, res, next) => {
       });
     }
 
-    /* ---------------- FINAL STRICT FILTER ---------------- */
     pipeline.push({
       $match: {
         $or: [
-          // ✅ WORKER: must be available + have skills
+          // WORKER: must be available + have skills
           {
             role: "worker",
             "availability.isAvailable": true,
             "skills.0": { $exists: true },
           },
 
-          // ✅ CONNECTOR: must have workforce (count > 0 already ensured)
           {
             role: "connector",
             "availability.isAvailable": true,
@@ -161,7 +151,6 @@ const searchPartners = async (req, res, next) => {
       },
     });
 
-    /* ---------------- FINAL RESPONSE CLEAN ---------------- */
     pipeline.push({
       $project: {
         _id: 1,
@@ -202,7 +191,6 @@ const searchPartners = async (req, res, next) => {
       },
     });
 
-    /* ---------------- SORT ---------------- */
     pipeline.push({
       $sort: {
         rating: -1,
@@ -210,7 +198,6 @@ const searchPartners = async (req, res, next) => {
       },
     });
 
-    /* ---------------- PAGINATION ---------------- */
     pipeline.push({ $skip: skip });
     pipeline.push({ $limit: limit });
 

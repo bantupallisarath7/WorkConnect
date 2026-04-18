@@ -50,7 +50,7 @@ const ResetPassword = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:7265/api/auth/reset-password/${token}`,
+        `https://workconnect-0306.onrender.com/api/auth/reset-password/${token}`,
         { password }
       );
 

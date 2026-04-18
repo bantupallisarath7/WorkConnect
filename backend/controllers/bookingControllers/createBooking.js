@@ -24,7 +24,7 @@ const createBooking = async (req, res, next) => {
         notes,
       } = req.body;
 
-      // ✅ BASIC VALIDATION
+      // BASIC VALIDATION
       if (!partnerId) {
         throw errorHandler(400, "Partner is required");
       }
@@ -33,7 +33,7 @@ const createBooking = async (req, res, next) => {
         throw errorHandler(400, "Address and contact details are required");
       }
 
-      // ✅ GET PARTNER
+      // GET PARTNER
       const partner = await User.findById(partnerId).session(session);
 
       if (!partner) {
@@ -44,9 +44,7 @@ const createBooking = async (req, res, next) => {
       let workerSnapshots = [];
       let finalWorkerDetails = null;
 
-      // =========================================================
-      // 🔥 CONNECTOR FLOW (MULTIPLE WORKERS) — ATOMIC
-      // =========================================================
+      
       if (partner.role === "connector") {
         if (!workers || workers.length === 0) {
           throw errorHandler(400, "Workers are required");
@@ -57,11 +55,11 @@ const createBooking = async (req, res, next) => {
             throw errorHandler(400, "Worker and count required");
           }
 
-          // ✅ ATOMIC UPDATE (NO RACE CONDITION)
+          // ATOMIC UPDATE (NO RACE CONDITION)
           const updatedWorker = await WorkforceCapacity.findOneAndUpdate(
             {
               _id: w.worker,
-              count: { $gte: w.count }, // 🔥 critical condition
+              count: { $gte: w.count }, // critical condition
             },
             {
               $inc: { count: -w.count }, // reduce inventory
@@ -72,7 +70,7 @@ const createBooking = async (req, res, next) => {
             }
           );
 
-          // ❌ If failed → not enough workers OR race condition hit
+          // If failed → not enough workers OR race condition hit
           if (!updatedWorker) {
             throw errorHandler(
               400,
@@ -80,10 +78,10 @@ const createBooking = async (req, res, next) => {
             );
           }
 
-          // ✅ Cost calculation (trusted DB values only)
+          // Cost calculation (trusted DB values only)
           labourCost += w.count * updatedWorker.wage;
 
-          // ✅ Snapshot (VERY IMPORTANT)
+          // Snapshot (VERY IMPORTANT)
           workerSnapshots.push({
             worker: updatedWorker._id,
             skill: updatedWorker.skill,
@@ -93,9 +91,7 @@ const createBooking = async (req, res, next) => {
         }
       }
 
-      // =========================================================
-      // 🔥 WORKER FLOW (INDIVIDUAL)
-      // =========================================================
+      
       if (partner.role === "worker") {
         if (!workerDetails || !workerDetails.skill) {
           throw errorHandler(400, "Worker skill required");
@@ -118,9 +114,6 @@ const createBooking = async (req, res, next) => {
         };
       }
 
-      // =========================================================
-      // 💰 COST CALCULATION
-      // =========================================================
       const commissionRate =
         partner.role === "connector" ? partner.commissionRate : 0;
 
@@ -129,15 +122,10 @@ const createBooking = async (req, res, next) => {
 
       const totalAmount = labourCost + commission + finalTravel;
 
-      // =========================================================
-      // 📅 SET WORK DATE = TODAY (SYSTEM CONTROLLED)
-      // =========================================================
+    
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
-      // =========================================================
-      // ✅ CREATE BOOKING
-      // =========================================================
       const booking = await Booking.create(
         [
           {
@@ -162,7 +150,7 @@ const createBooking = async (req, res, next) => {
             paymentMethod,
             notes,
 
-            workDate: today, // ✅ always today
+            workDate: today, // always today
             status: "pending",
           },
         ],
