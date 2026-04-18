@@ -241,7 +241,7 @@ const Signup = ({ role }) => {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="flex items-center justify-center px-5 min-h-[calc(100vh-64px)]">
+      <div className="flex justify-center items-start md:items-center min-h-[calc(100dvh-5rem)] px-4 py-6">
 
         <div className="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-lg p-5 sm:p-6 md:p-8">
 
