@@ -212,7 +212,7 @@ const HelpPage = () => {
                 href="mailto:support@yourapp.com"
                 className="mt-4 inline-block text-sm font-medium text-blue-500 hover:underline"
               >
-                support@yourapp.com
+                bantupallisarath@gmail.com
               </a>
             </div>
 
