@@ -27,7 +27,7 @@ const resetAvailability = async () => {
 };
 
 cron.schedule(
-    "0 0 * * *",
+    "* * * * *",
     async () => {
         try {
             console.log("Running availability reset cron...");
