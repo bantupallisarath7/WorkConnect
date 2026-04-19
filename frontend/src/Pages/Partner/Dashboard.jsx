@@ -125,7 +125,7 @@ const Dashboard = () => {
         <div className="p-4 md:p-6 space-y-6">
 
             {/* HEADER */}
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+            <div className="flex items-center justify-between flex-wrap gap-3">
 
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900">
@@ -137,7 +137,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* DATE FILTER */}
-                <div className="w-full sm:w-auto flex justify-center sm:justify-end">
+                <div className="flex flex-wrap items-center gap-2 bg-gray-100 p-1 rounded-full">
                     <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-full w-fit mx-auto sm:mx-0">
 
                         <button
