@@ -97,12 +97,12 @@ const PublicProfile = ({ connector, worker, onClose }) => {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-3 z-50">
 
             {/* MODAL */}
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl max-h-[85vh] flex flex-col">
+            <div className="relative w-full max-w-sm bg-white rounded-2xl shadow-xl max-h-[85vh] flex flex-col overflow-hidden">
 
                 {/* CLOSE BUTTON (FIXED) */}
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 sm:top-4 sm:right-4 z-50 backdrop-blur hover:bg-white p-2 rounded-full transition"
+                    className="absolute top-2 right-2 z-10 bg-white/80 hover:bg-white p-1.5 rounded-full shadow-sm transition"
                 >
                     <X size={18} />
                 </button>
@@ -110,10 +110,10 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                 {/* HEADER */}
                 <div className={`sticky top-0 z-40 ${isConnector ? "bg-orange-200" : "bg-blue-200"} backdrop-blur`}>
 
-                    <div className="flex flex-col items-center pt-6 pb-5 px-6">
+                    <div className="flex flex-col items-center pt-5 pb-4 px-4">
 
                         {/* AVATAR */}
-                        <div className={`w-20 h-20 rounded-full bg-white flex items-center justify-center ${isConnector ? "text-orange-600" : "text-blue-600"} text-2xl font-bold shadow-md`}>
+                        <div className={`w-16 h-16 rounded-full bg-white flex items-center justify-center ${isConnector ? "text-orange-600" : "text-blue-600"} text-2xl font-bold shadow-md`}>
                             {user?.name?.charAt(0)}
                         </div>
 
@@ -150,7 +150,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                 </div>
 
                 {/* SCROLLABLE BODY */}
-                <div className="flex-1 overflow-y-auto p-4 space-y-6 scroll-smooth">
+                <div className="flex-1 overflow-y-auto px-3 py-3 space-y-4 scroll-smooth">
 
                     {loading && (
                         <div className="min-h-[40vh] flex justify-center items-center py-16">
