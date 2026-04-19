@@ -97,7 +97,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-3 z-50">
 
             {/* MODAL */}
-            <div className="relative w-full max-w-sm bg-white rounded-2xl shadow-xl max-h-[85vh] flex flex-col overflow-hidden">
+            <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-2xl shadow-xl max-h-[85vh] flex flex-col overflow-hidden">
 
                 {/* CLOSE BUTTON (FIXED) */}
                 <button
