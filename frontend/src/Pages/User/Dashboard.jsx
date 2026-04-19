@@ -224,13 +224,13 @@ const Dashboard = () => {
             <div className="mt-10 mb-10">
 
               {/* HEADER + FILTER BUTTONS */}
-              <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+              <div className="flex items-center justify-between mb-4 gap-2">
 
-                <h2 className="text-lg md:text-xl font-semibold text-gray-900">
+                <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
                   {activeTab === "worker" ? "Top Workers" : "Top Connectors"}
                 </h2>
 
-                <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-full">
+                <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-full shrink-0">
                   {["worker", "connector"].map((tab) => (
                     <button
                       key={tab}
