@@ -12,6 +12,7 @@ import {
   updateAvailability,
 } from "../../../redux/auth/authSlice";
 import useLockScroll from "../../utils/useLockScroll";
+import logo from "../../assets/logo.png"
 
 const Navbar = ({ role }) => {
   const [openProfilePanel, setOpenProfilePanel] = useState(false);
@@ -141,11 +142,22 @@ const Navbar = ({ role }) => {
 
           {/* LEFT */}
           <div className="flex items-center gap-4 md:gap-6">
-            
+
             <div
               onClick={() => navigate(config.dashboard)}
               className="flex items-center gap-2 group cursor-pointer transition-transform duration-200 active:scale-95 select-none"
             >
+              {/* LOGO */}
+              <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 bg-gray-900 rounded-xl flex items-center justify-center 
+                                                shadow-lg border border-white/10 transition-transform duration-200 hover:scale-105"
+              >
+                <img
+                  src={logo}
+                  alt="WC Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
               {/* Brand Name */}
               <h1 className="text-xl md:text-2xl font-bold tracking-tight flex items-center">
                 <span className="text-white group-hover:text-gray-200 transition-colors">Work</span>
