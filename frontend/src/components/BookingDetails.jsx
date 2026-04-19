@@ -117,10 +117,10 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
     <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
 
       {/* MODAL */}
-      <div className="w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
 
         {/* HEADER */}
-        <div className="px-5 py-4 border-b flex items-center justify-between">
+        <div className="px-4 sm:px-5 py-3 sm:py-4 border-b flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-900">
             Booking Details
           </h2>
@@ -134,7 +134,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
         </div>
 
         {/* CONTENT */}
-        <div className="p-5 space-y-5 overflow-y-auto bg-gray-50">
+        <div className="px-3 sm:px-5 py-4 sm:py-5 space-y-4 sm:space-y-5 overflow-y-auto bg-gray-50">
 
           {/* OTP SECTION (ONLY FOR ACCEPTED) */}
           {booking.status === "accepted" && (
@@ -162,7 +162,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
                     {otp.split("").map((digit, i) => (
                       <div
                         key={i}
-                        className="w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center 
+                        className="w-10 h-12 sm:w-12 sm:h-14 md:w-14 md:h-16 flex items-center justify-center 
                       bg-gray-900 text-white rounded-xl text-xl sm:text-2xl font-bold 
                       shadow-md tracking-widest"
                       >
@@ -234,7 +234,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
           />
 
           {/* WORKERS */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100">
             <h3 className="text-sm font-semibold text-gray-700 mb-4">
               Workers Assigned
             </h3>
@@ -286,7 +286,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
           </div>
 
           {/* ADDITIONAL DETAILS */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100">
             <h3 className="text-sm font-semibold text-gray-700 mb-4">
               Additional Details
             </h3>
@@ -319,7 +319,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
           </div>
 
           {/* PAYMENT */}
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-2xl p-5 shadow-lg">
+          <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-2xl p-4 sm:p-5 shadow-sm">
             <h3 className="text-sm font-semibold mb-4 opacity-80">
               Payment Summary
             </h3>
@@ -396,7 +396,7 @@ const BookingDetails = ({ booking, onClose,refreshBookings }) => {
 
       {showCancelConfirm && (
         <div className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white w-full max-w-sm rounded-2xl shadow-xl p-5">
+          <div className="bg-white w-full max-w-[90%] sm:max-w-sm rounded-2xl shadow-xl p-5">
 
             <h2 className="text-lg font-semibold text-gray-900">
               Cancel Booking?
