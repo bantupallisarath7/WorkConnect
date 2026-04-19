@@ -112,7 +112,7 @@ const Navbar = () => {
             {/* LOGO */}
             <div
               onClick={() => navigate("/dashboard")}
-              className="flex items-center gap-2 group cursor-pointer transition-transform duration-200 active:scale-95"
+              className="flex items-center gap-2 group cursor-pointer transition-transform duration-200 active:scale-95 select-none"
             >
               {/* Brand Name */}
               <h1 className="text-xl md:text-2xl font-bold tracking-tight flex items-center">
