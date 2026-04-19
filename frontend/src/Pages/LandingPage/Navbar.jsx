@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
+
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -14,19 +16,27 @@ const Navbar = () => {
         <header className="fixed top-0 w-full z-50 bg-gray-900 backdrop-blur-md border-b border-white/10">
 
             <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between text-white">
-
-            {/* LOGO */}
-            <div
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2 group cursor-pointer transition-transform duration-200 active:scale-95 select-none"
-            >
-              {/* Brand Name */}
-              <h1 className="text-xl md:text-2xl font-bold tracking-tight flex items-center">
-                <span className="text-white group-hover:text-gray-200 transition-colors">Work</span>
-                <span className="text-orange-400">Connect</span>
-                <span className=" sm:block w-1.5 h-1.5 bg-orange-400 rounded-full ml-1 animate-pulse"></span>
-              </h1>
-            </div>
+                <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 bg-gray-900 rounded-xl flex items-center justify-center 
+                    shadow-lg border border-white/10 transition-transform duration-200 hover:scale-105"
+                >
+                    <img
+                        src={logo}
+                        alt="WC Logo"
+                        className="w-4/5 h-4/5 object-contain"
+                    />
+                </div>
+                {/* LOGO */}
+                <div
+                    onClick={() => navigate("/")}
+                    className="flex items-center gap-2 group cursor-pointer transition-transform duration-200 active:scale-95 select-none"
+                >
+                    {/* Brand Name */}
+                    <h1 className="text-xl md:text-2xl font-bold tracking-tight flex items-center">
+                        <span className="text-white group-hover:text-gray-200 transition-colors">Work</span>
+                        <span className="text-orange-400">Connect</span>
+                        <span className=" sm:block w-1.5 h-1.5 bg-orange-400 rounded-full ml-1 animate-pulse"></span>
+                    </h1>
+                </div>
 
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
