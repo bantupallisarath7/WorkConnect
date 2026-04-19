@@ -150,7 +150,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                 </div>
 
                 {/* SCROLLABLE BODY */}
-                <div className="flex-1 overflow-y-auto px-3 py-3 space-y-4 scroll-smooth">
+                <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-4 sm:space-y-5">
 
                     {loading && (
                         <div className="min-h-[40vh] flex justify-center items-center py-16">
