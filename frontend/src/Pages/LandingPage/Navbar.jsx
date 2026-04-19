@@ -28,7 +28,7 @@ const Navbar = () => {
                         <img
                             src={logo}
                             alt="WC Logo"
-                            className="w-4/5 h-4/5 object-contain"
+                            className="w-full h-full object-contain"
                         />
                     </div>
                     {/* Brand Name */}
