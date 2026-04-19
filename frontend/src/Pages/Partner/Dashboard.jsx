@@ -138,39 +138,20 @@ const Dashboard = () => {
 
                 {/* DATE FILTER */}
                 <div className="flex gap-2 bg-gray-100 p-1 rounded-full">
-                    <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-full w-fit mx-auto sm:mx-0">
-
+                    {["all", "today", "yesterday"].map((f) => (
                         <button
-                            onClick={() => setSelectedDate("all")}
-                            className={`px-4 py-1 text-sm rounded-full transition ${selectedDate === "all"
-                                ? "bg-white shadow text-orange-500 font-medium"
-                                : "text-gray-600 hover:text-gray-900"
+                            key={f}
+                            onClick={() => setSelectedDate(f)}
+                            className={`px-4 py-1 text-sm rounded-full transition ${selectedDate === f
+                                    ? "bg-white shadow text-orange-500 font-medium"
+                                    : "text-gray-600 hover:text-gray-900"
                                 }`}
                         >
-                            All
+                            {f === "all"
+                                ? "All"
+                                : f.charAt(0).toUpperCase() + f.slice(1)}
                         </button>
-
-                        <button
-                            onClick={() => setSelectedDate("today")}
-                            className={`px-4 py-1 text-sm rounded-full transition ${selectedDate === "today"
-                                ? "bg-white shadow text-orange-500 font-medium"
-                                : "text-gray-600 hover:text-gray-900"
-                                }`}
-                        >
-                            Today
-                        </button>
-
-                        <button
-                            onClick={() => setSelectedDate("yesterday")}
-                            className={`px-4 py-1 text-sm rounded-full transition ${selectedDate === "yesterday"
-                                ? "bg-white shadow text-orange-500 font-medium"
-                                : "text-gray-600 hover:text-gray-900"
-                                }`}
-                        >
-                            Yesterday
-                        </button>
-
-                    </div>
+                    ))}
                 </div>
 
             </div>
