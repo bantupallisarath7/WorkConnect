@@ -102,7 +102,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                 {/* CLOSE BUTTON (FIXED) */}
                 <button
                     onClick={onClose}
-                    className="absolute top-2 right-2 z-10 bg-white/80 hover:bg-white p-1.5 rounded-full shadow-sm transition"
+                    className="absolute top-2 right-2 z-50 bg-white/80 hover:bg-white p-1.5 rounded-full shadow-sm transition"
                 >
                     <X size={18} />
                 </button>
@@ -110,7 +110,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                 {/* HEADER */}
                 <div className={`sticky top-0 z-40 ${isConnector ? "bg-orange-200" : "bg-blue-200"} backdrop-blur`}>
 
-                    <div className="flex flex-col items-center pt-5 pb-4 px-4">
+                    <div className="flex flex-col items-center pt-8 pb-4 px-4">
 
                         {/* AVATAR */}
                         <div className={`w-16 h-16 rounded-full bg-white flex items-center justify-center ${isConnector ? "text-orange-600" : "text-blue-600"} text-2xl font-bold shadow-md`}>
