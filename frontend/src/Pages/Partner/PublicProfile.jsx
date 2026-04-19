@@ -94,10 +94,10 @@ const PublicProfile = ({ connector, worker, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center px-2 sm:px-3">
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-3 z-50">
 
             {/* MODAL */}
-            <div className="relative w-full max-w-2xl h-[90vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl max-h-[85vh] flex flex-col">
 
                 {/* CLOSE BUTTON (FIXED) */}
                 <button
@@ -150,7 +150,7 @@ const PublicProfile = ({ connector, worker, onClose }) => {
                 </div>
 
                 {/* SCROLLABLE BODY */}
-                <div className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth">
+                <div className="flex-1 overflow-y-auto p-4 space-y-6 scroll-smooth">
 
                     {loading && (
                         <div className="min-h-[40vh] flex justify-center items-center py-16">
