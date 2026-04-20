@@ -9,7 +9,7 @@ WorkConnect is a role-based MERN stack web application that enables customers to
 
 ## Features
 
--  **Customer**
+- **Customer**
   - Book workers for same-day services (no future booking)
   - View available workers
 
