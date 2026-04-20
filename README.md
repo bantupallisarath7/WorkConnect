@@ -1,5 +1,7 @@
 # WorkConnect
 
+[GitHub](https://github.com/bantupallisarath7/WorkConnect) • [Live](https://work-connect-seven.vercel.app/)
+
 ## Overview
 WorkConnect is a role-based MERN stack web application that enables customers to book workers for same-day services. The platform supports three types of users: Customer, Connector, and Worker, ensuring seamless coordination even for workers without direct system access.
 
@@ -59,7 +61,7 @@ npm run dev
 cd ../frontend
 npm install
 npm start
-
+```
 ## Links
-- GitHub: https://github.com/bantupallisarath7/WorkConnect
-- Live: https://work-connect-seven.vercel.app/
+- GitHub: (https://github.com/bantupallisarath7/WorkConnect.git)
+- Live: (https://work-connect-seven.vercel.app/)
